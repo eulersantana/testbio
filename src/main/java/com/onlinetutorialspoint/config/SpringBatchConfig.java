@@ -1,9 +1,14 @@
 package com.onlinetutorialspoint.config;
 
 import com.onlinetutorialspoint.listener.JobListener;
+import com.onlinetutorialspoint.model.CsvParse;
 import com.onlinetutorialspoint.model.Employee;
 import com.onlinetutorialspoint.model.EmployeeDTO;
+import com.onlinetutorialspoint.model.HealthUnit;
+import com.onlinetutorialspoint.model.HealthUnitDTO;
 import com.onlinetutorialspoint.processor.EmployeeProcessor;
+import com.onlinetutorialspoint.processor.HealtUnitProcessor;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -36,16 +41,17 @@ public class SpringBatchConfig {
     public DataSource dataSource;
 
     @Bean
-    public FlatFileItemReader<Employee> reader() {
-        FlatFileItemReader<Employee> reader = new FlatFileItemReader<Employee>();
-        reader.setResource(new ClassPathResource("employee.csv"));
-
-        reader.setLineMapper(new DefaultLineMapper<Employee>() {{
+    public FlatFileItemReader<CsvParse> reader() {
+        FlatFileItemReader<CsvParse> reader = new FlatFileItemReader<CsvParse>();
+        reader.setResource(new ClassPathResource("ubs.csv"));
+        reader.setLinesToSkip(1);
+        reader.setLineMapper(new DefaultLineMapper<CsvParse>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
-                setNames(new String[] {"id", "first_name", "last_name","company_name","address","city","county","state","zip" });
+                setNames(new String[] {"vlr_latitude", "vlr_longitude", "cod_munic","cod_cnes","nom_estab","dsc_endereco","dsc_bairro","dsc_cidade","dsc_telefone","dsc_estrut_fisic_ambiencia","dsc_adap_defic_fisic_idosos","dsc_equipamentos","dsc_medicamentos" });
             }});
+            
             setFieldSetMapper(new BeanWrapperFieldSetMapper() {{
-                setTargetType(Employee.class);
+                setTargetType(CsvParse.class);
             }});
         }});
         return reader;
@@ -53,16 +59,16 @@ public class SpringBatchConfig {
 
 
     @Bean
-    public EmployeeProcessor processor() {
-        return new EmployeeProcessor();
+    public HealtUnitProcessor processor() {
+        return new HealtUnitProcessor();
     }
 
     @Bean
-    public JdbcBatchItemWriter<EmployeeDTO> writer() {
-        JdbcBatchItemWriter<EmployeeDTO> writer = new JdbcBatchItemWriter<EmployeeDTO>();
+    public JdbcBatchItemWriter<HealthUnitDTO> writer() {
+        JdbcBatchItemWriter<HealthUnitDTO> writer = new JdbcBatchItemWriter<HealthUnitDTO>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-        writer.setSql("INSERT INTO employee (id, first_name,last_name,company_name,address,city,county,state,zip) " +
-                "VALUES (:id, :firstName, :lastName,:companyName,:address,:city,:county,:state,:zip)");
+        writer.setSql("INSERT INTO HEALTH_UNIT (id, name, address, city, phone, score_id, geocode_id) " +
+                "VALUES (:id, :name, :address,:city, :phone, :score, :geocode)");
         writer.setDataSource(dataSource);
         return writer;
     }
@@ -80,7 +86,7 @@ public class SpringBatchConfig {
     @Bean
     public Step step1() {
         return stepBuilderFactory.get("step1")
-                .<Employee, EmployeeDTO> chunk(10)
+                .<CsvParse, HealthUnitDTO> chunk(13)
                 .reader(reader())
                 .processor(processor())
                 .writer(writer())

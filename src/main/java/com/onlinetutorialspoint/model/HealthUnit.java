@@ -2,33 +2,40 @@ package com.onlinetutorialspoint.model;
 
 import static java.util.Optional.ofNullable;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class HealthUnit {
-	
-	@JsonProperty(required = true)
+@Entity
+public class HealthUnit implements Serializable {
+	@Id
 	private Integer id;
 
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private String name;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private String address;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private String city;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private String phone;
 	
-	@JsonProperty(required = true)
+	@OneToOne
 	private Score score;
-
-	@JsonProperty(required = true)
+	
+	@OneToOne
 	private Geocode geocode;
 	
 	

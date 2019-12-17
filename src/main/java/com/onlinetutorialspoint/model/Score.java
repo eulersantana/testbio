@@ -1,23 +1,34 @@
 package com.onlinetutorialspoint.model;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonInclude(JsonInclude.Include.NON_NULL)
-public class Score {
+@Entity
+public class Score implements Serializable{
 	
-	@JsonProperty(required = true)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	@Column(length=200, nullable=true)
 	private Integer size;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private Integer adaptationForSeniors;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private Integer medicalEquipment;
 	
-	@JsonProperty(required = true)
+	@Column(length=200, nullable=true)
 	private Integer medecine;
 
 	public Integer getSize() {
@@ -31,6 +42,15 @@ public class Score {
 		this.adaptationForSeniors = this.preProcessingScore(adaptationForSeniorsStr);
 		this.medicalEquipment = this.preProcessingScore(medicalEquipmentStr);
 		this.medecine = this.preProcessingScore(medecineStr);
+	}
+	
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 
@@ -77,9 +97,10 @@ public class Score {
 
 	@Override
 	public String toString() {
-		return "Score [size=" + size + ", adaptationForSeniors=" + adaptationForSeniors + ", medicalEquipment="
-				+ medicalEquipment + ", medecine=" + medecine + "]";
-	}	
-	
+		return "Score [id=" + id + ", size=" + size + ", adaptationForSeniors=" + adaptationForSeniors
+				+ ", medicalEquipment=" + medicalEquipment + ", medecine=" + medecine + "]";
+	}
+
+
 	
 }
