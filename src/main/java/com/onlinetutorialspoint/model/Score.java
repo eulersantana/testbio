@@ -35,7 +35,9 @@ public class Score implements Serializable{
 		return size;
 	}
 	
-
+	public Score() {
+		
+	}
 	public Score(String sizeStr, String adaptationForSeniorsStr, String medicalEquipmentStr, String medecineStr) {
 		super();
 		this.size = this.preProcessingScore(sizeStr);

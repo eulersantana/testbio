@@ -38,6 +38,9 @@ public class HealthUnit implements Serializable {
 	@OneToOne
 	private Geocode geocode;
 	
+	public HealthUnit() {
+		
+	}
 	
 	public HealthUnit(Integer id, String name, String address, String city, String phone, Score score,
 			Geocode geocode) {

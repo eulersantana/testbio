@@ -24,7 +24,9 @@ public class Geocode implements Serializable {
 	@Column(length=200, nullable=true)
 	private Float lng;
     
-	
+	public Geocode() {
+		
+	}
 	public Geocode(Float lat, Float lng) {
 		super();
 		this.lat = lat;

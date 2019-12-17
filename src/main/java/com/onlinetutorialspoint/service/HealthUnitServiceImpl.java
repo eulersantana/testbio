@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.onlinetutorialspoint.model.Employee;
+import com.onlinetutorialspoint.model.HealthUnit;
 import com.onlinetutorialspoint.repository.HealthUnitRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,32 +24,34 @@ public class HealthUnitServiceImpl implements HealthUnitService {
 
 
 
-    public Page<Employee> search(
-            String searchTerm,
-            int page,
-            int size) {
-        PageRequest pageRequest = PageRequest.of(
-                page,
-                size,
-                Sort.Direction.ASC,
-                "lastName");
-
-        return healthUnitRepository.search(
-                searchTerm.toLowerCase(),
-                pageRequest);
-    }
-
-    public Page<Employee> findAll() {
+//    public Page<Employee> search(
+//            String searchTerm,
+//            int page,
+//            int size) {
+//        PageRequest pageRequest = PageRequest.of(
+//                page,
+//                size,
+//                Sort.Direction.ASC,
+//                "lastName");
+//
+//        return healthUnitRepository.search(
+//                searchTerm.toLowerCase(),
+//                pageRequest);
+//    }
+//
+    public Page<HealthUnit> findAll() {
         int page = 0;
         int size = 10;
         PageRequest pageRequest = PageRequest.of(
                 page,
-                size,
-                Sort.Direction.ASC,
-                "name");
+                size);
         return new PageImpl<>(
         		healthUnitRepository.findAll(), 
                 pageRequest, size);
+    }
+    
+    public void save(HealthUnit healthUnit) {
+    	healthUnitRepository.save(healthUnit);
     }
 
 
