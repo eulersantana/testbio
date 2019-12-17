@@ -3,7 +3,10 @@ package com.onlinetutorialspoint;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@SpringBootApplication(scanBasePackageClasses = SpringBootBatchExampleApplication.class)
+@EnableSwagger2
 public class SpringBootBatchExampleApplication {
 
 	public static void main(String[] args) {

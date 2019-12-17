@@ -22,10 +22,10 @@ public class JobListener extends JobExecutionListenerSupport {
     public void afterJob(JobExecution jobExecution) {
         if(jobExecution.getStatus() == BatchStatus.COMPLETED) {
            // System.out.println("In Completion Listener ..");
-            List<EmployeeDTO> results = jdbcTemplate.query("SELECT first_name,last_name,company_name,address,city,county,state,zip FROM employee",
+            List<EmployeeDTO> results = jdbcTemplate.query("SELECT id, first_name,last_name,company_name,address,city,county,state,zip FROM employee",
                     (rs,rowNum)->{
-                        return new EmployeeDTO(rs.getString(1), rs.getString(2),rs.getString(3),rs.getString(4),
-                                rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
+                        return new EmployeeDTO(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),
+                                rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9));
                     }
             );
             //results.forEach(System.out::println);

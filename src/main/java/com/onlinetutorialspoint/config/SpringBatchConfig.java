@@ -42,7 +42,7 @@ public class SpringBatchConfig {
 
         reader.setLineMapper(new DefaultLineMapper<Employee>() {{
             setLineTokenizer(new DelimitedLineTokenizer() {{
-                setNames(new String[] { "first_name", "last_name","company_name","address","city","county","state","zip" });
+                setNames(new String[] {"id", "first_name", "last_name","company_name","address","city","county","state","zip" });
             }});
             setFieldSetMapper(new BeanWrapperFieldSetMapper() {{
                 setTargetType(Employee.class);
@@ -61,8 +61,8 @@ public class SpringBatchConfig {
     public JdbcBatchItemWriter<EmployeeDTO> writer() {
         JdbcBatchItemWriter<EmployeeDTO> writer = new JdbcBatchItemWriter<EmployeeDTO>();
         writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-        writer.setSql("INSERT INTO employee (first_name,last_name,company_name,address,city,county,state,zip) " +
-                "VALUES (:firstName, :lastName,:companyName,:address,:city,:county,:state,:zip)");
+        writer.setSql("INSERT INTO employee (id, first_name,last_name,company_name,address,city,county,state,zip) " +
+                "VALUES (:id, :firstName, :lastName,:companyName,:address,:city,:county,:state,:zip)");
         writer.setDataSource(dataSource);
         return writer;
     }

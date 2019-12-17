@@ -1,6 +1,7 @@
-DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS employee;
 
 CREATE TABLE employee  (
+    id INT,
     first_name VARCHAR(40),
     last_name VARCHAR(40),
     company_name VARCHAR(40),
@@ -10,3 +11,4 @@ CREATE TABLE employee  (
     state VARCHAR(40),
     zip VARCHAR(10)
 );
+

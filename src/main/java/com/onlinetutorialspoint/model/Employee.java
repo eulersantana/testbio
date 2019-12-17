@@ -1,22 +1,49 @@
 package com.onlinetutorialspoint.model;
 
-import java.io.Serializable;
 
+import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class Employee implements Serializable {
+	@Id
+    private String id;
+	
+	@Column(length=200, nullable=true)
     private String firstName;
+	
+	@Column(length=200, nullable=true)
     private String lastName;
+	 
+	@Column(length=200, nullable=true)
     private String companyName;
+	 
+	@Column(length=200, nullable=true)
     private String address;
+	
+	@Column(length=200, nullable=true)
     private String city;
+	
+	@Column(length=200, nullable=true)
     private String county;
+	
+	@Column(length=200, nullable=true)
     private String state;
+	
+	@Column(length=200, nullable=true)
     private String zip;
 
 
-    public Employee() {
+	public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String companyName, String address, String city, String county, String state, String zip) {
+    public Employee(String id, String firstName, String lastName, String companyName, String address, String city, String county, String state, String zip) {
+    	this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyName = companyName;
@@ -26,8 +53,18 @@ public class Employee implements Serializable {
         this.state = state;
         this.zip = zip;
     }
+    
+    
 
-    public String getFirstName() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 

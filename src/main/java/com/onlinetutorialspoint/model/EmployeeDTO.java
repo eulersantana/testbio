@@ -1,6 +1,7 @@
 package com.onlinetutorialspoint.model;
 
 public class EmployeeDTO {
+	private String id;
     private String firstName;
     private String lastName;
     private String companyName;
@@ -14,8 +15,9 @@ public class EmployeeDTO {
     public EmployeeDTO() {
     }
 
-    public EmployeeDTO(String firstName, String lastName, String companyName, String address, String city, String county, String state, String zip) {
-        this.firstName = firstName;
+    public EmployeeDTO(String id, String firstName, String lastName, String companyName, String address, String city, String county, String state, String zip) {
+    	this.id = id;
+    	this.firstName = firstName;
         this.lastName = lastName;
         this.companyName = companyName;
         this.address = address;
@@ -24,8 +26,17 @@ public class EmployeeDTO {
         this.state = state;
         this.zip = zip;
     }
+    
 
-    public String getFirstName() {
+    public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 
@@ -88,7 +99,7 @@ public class EmployeeDTO {
     public void setZip(String zip) {
         this.zip = zip;
     }
-
+    
     @Override
     public String toString() {
         return "EmployeeDTO{" +
