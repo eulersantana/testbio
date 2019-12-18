@@ -1,0 +1,14 @@
+version: '2.2'
+services:
+	bionexoteste:
+    	build:
+      		context: ./
+      		dockerfile: Dockerfile
+    	image: bionexotesteapi
+    	ports:
+      		- 8080
+    	networks:
+      		- network1
+ 
+networks:
+  network1:
