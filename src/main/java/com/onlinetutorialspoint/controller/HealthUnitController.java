@@ -34,14 +34,13 @@ public class HealthUnitController {
     	
     	String pontos[] = query.split(",");
     	try {
-    		if (pontos.length > 1) {
 				Page<HealthUnit> result = service.search(Float.parseFloat(pontos[0]), Float.parseFloat(pontos[1]), page, size);
 		        
 		    	response.setCurrentPage(result.getNumber());
 		    	response.setPerPage(result.getNumberOfElements());
 		    	response.setTotalEntries(result.getTotalElements());
 		    	response.setEntries(result.getContent());
-    		}
+    		
 		} catch (BeansException e) {
 			log.error("There was a Business Exception. Exception: {}", e.getMessage(), e);
 		}

@@ -5,7 +5,7 @@ import com.onlinetutorialspoint.model.HealthUnit;
 
 public interface HealthUnitService {
 //	
-	public Page<HealthUnit> search(Float lat, Float lng, int page, int size); 
+	public Page<HealthUnit> search(Float lat, Float log, int page, int size); 
 	
 	public void save(HealthUnit healthUnit);
 }

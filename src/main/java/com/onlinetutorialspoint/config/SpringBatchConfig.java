@@ -2,7 +2,7 @@ package com.onlinetutorialspoint.config;
 
 import com.onlinetutorialspoint.listener.JobListener;
 import com.onlinetutorialspoint.model.CsvParse;
-import com.onlinetutorialspoint.model.HealthUnitDTO;
+import com.onlinetutorialspoint.DTO.HealthUnitDTO;
 import com.onlinetutorialspoint.processor.HealtUnitProcessor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;

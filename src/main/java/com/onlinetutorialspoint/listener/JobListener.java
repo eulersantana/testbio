@@ -1,6 +1,6 @@
 package com.onlinetutorialspoint.listener;
 
-import com.onlinetutorialspoint.model.HealthUnitDTO;
+import com.onlinetutorialspoint.DTO.HealthUnitDTO;
 import com.onlinetutorialspoint.service.GeocodeService;
 import com.onlinetutorialspoint.service.ScoreService;
 

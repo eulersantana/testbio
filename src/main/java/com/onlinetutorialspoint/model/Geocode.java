@@ -20,15 +20,25 @@ public class Geocode implements Serializable {
 	
 	private Float lat;
 	
-	private Float lng;
+	private Float log;
     
 	public Geocode() {
-		
 	}
-	public Geocode(Float lat, Float lng) {
-		super();
+
+	public Float getLat() {
+		return lat;
+	}
+
+	public void setLat(Float lat) {
 		this.lat = lat;
-		this.lng = lng;
+	}
+
+	public Float getLog() {
+		return log;
+	}
+
+	public void setLog(Float log) {
+		this.log = log;
 	}
 
 	public Integer getId() {
@@ -38,28 +48,13 @@ public class Geocode implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	public Float getLat() {
-		return lat;
-	}
 
-	public void setLat(Float lat) {
+	public Geocode(Float lat, Float log) {
+		super();
 		this.lat = lat;
+		this.log = log;
 	}
-
-	public Float getLng() {
-		return lng;
-	}
-
-	public void setLng(Float lng) {
-		this.lng = lng;
-	}
-
-	@Override
-	public String toString() {
-		return "Geocode [lat=" + lat + ", lng=" + lng + "]";
-	}
+	
 	
 	
 }

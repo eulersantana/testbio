@@ -1,8 +1,8 @@
 package com.onlinetutorialspoint.processor;
 
+import com.onlinetutorialspoint.DTO.HealthUnitDTO;
 import com.onlinetutorialspoint.model.CsvParse;
 import com.onlinetutorialspoint.model.Geocode;
-import com.onlinetutorialspoint.model.HealthUnitDTO;
 import com.onlinetutorialspoint.model.Score;
 import com.onlinetutorialspoint.service.GeocodeService;
 import com.onlinetutorialspoint.service.ScoreService;
