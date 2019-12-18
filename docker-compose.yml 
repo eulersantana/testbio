@@ -1,14 +1,15 @@
 version: '2.2'
 services:
-	bionexoteste:
-    	build:
-      		context: ./
-      		dockerfile: Dockerfile
-    	image: bionexotesteapi
-    	ports:
-      		- 8080
-    	networks:
-      		- network1
- 
+  hola:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: holaweb
+    ports:
+      - 8080
+    networks:
+      - network1
+    scale: 3
+
 networks:
   network1:
