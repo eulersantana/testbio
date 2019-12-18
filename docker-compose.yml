@@ -1,12 +1,12 @@
 version: '2.2'
 services:
-  hola:
+  bionexo:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: holaweb
+    image: bionexoapi
     ports:
-      - 8080
+      - '8080:8080'
     networks:
       - network1
     scale: 3
