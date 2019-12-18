@@ -34,14 +34,15 @@ public class Score implements Serializable{
 	public Score() {
 		
 	}
-	public Score(String sizeStr, String adaptationForSeniorsStr, String medicalEquipmentStr, String medecineStr) {
-		super();
-		this.size = this.preProcessingScore(sizeStr);
-		this.adaptationForSeniors = this.preProcessingScore(adaptationForSeniorsStr);
-		this.medicalEquipment = this.preProcessingScore(medicalEquipmentStr);
-		this.medecine = this.preProcessingScore(medecineStr);
-	}
 	
+	public Score(Integer size, Integer adaptationForSeniors, Integer medicalEquipment, Integer medecine) {
+		super();
+		this.size = size;
+		this.adaptationForSeniors = adaptationForSeniors;
+		this.medicalEquipment = medicalEquipment;
+		this.medecine = medecine;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -80,7 +81,7 @@ public class Score implements Serializable{
 		this.medecine = medecine;
 	}
 	
-	private Integer preProcessingScore(String sizeStr) {
+	public static Integer preProcessingScore(String sizeStr) {
 		
 		if (sizeStr.toUpperCase().indexOf("DESEMPENHO MUITO ACIMA") >= 0) {
 			return 3;

@@ -23,8 +23,11 @@ public class HealtUnitProcessor implements ItemProcessor<CsvParse, HealthUnitDTO
     	Geocode geocode = new Geocode(Float.parseFloat(csvParse.getVlr_latitude()), Float.parseFloat(csvParse.getVlr_longitude()));
     	geocodeService.save(geocode);
     	
-    	Score score = new Score(csvParse.getDsc_estrut_fisic_ambiencia(),csvParse.getDsc_adap_defic_fisic_idosos(),
-    			csvParse.getDsc_equipamentos(), csvParse.getDsc_medicamentos());
+    	Score score = new Score(
+    			Score.preProcessingScore(csvParse.getDsc_estrut_fisic_ambiencia()),
+    			Score.preProcessingScore(csvParse.getDsc_adap_defic_fisic_idosos()),
+    			Score.preProcessingScore(csvParse.getDsc_equipamentos()), 
+    			Score.preProcessingScore(csvParse.getDsc_medicamentos()));
     	scoreService.save(score);
   	
         final HealthUnitDTO healthUnitDTO = new HealthUnitDTO(Integer.parseInt(csvParse.getCod_cnes()), csvParse.getNom_estab(),
