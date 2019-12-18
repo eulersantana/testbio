@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.onlinetutorialspoint</groupId>
-	<artifactId>SpringBoot-Batch-Example</artifactId>
+	<artifactId>Bionexo-Teste</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringBoot-Batch-Example</name>
-	<description>Spring Boot Batch CSV to Database Example</description>
+	<name>Bionexo Teste</name>
+	<description>Api para lista de Unidades de Saúde</description>
 
 	<properties>
 		<java.version>1.8</java.version>
