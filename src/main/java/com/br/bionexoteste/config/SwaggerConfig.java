@@ -30,7 +30,7 @@ public class SwaggerConfig {
 	    private ApiInfo getApiInfo() {
 	        return new ApiInfo(
 	                "Esta é uma avaliação básica de código. "
-	                + "O objetivo é conhecer um pouco do seu conhecimento/prática de RESTful, Spring e Java.",
+	                + "O objetivo é conhecer o conhecimento/prática de RESTful, Spring e Java.",
 	                "Serviço para listagem de Unidades de Saúde",
 	                "1.0.0",
 	                "",
