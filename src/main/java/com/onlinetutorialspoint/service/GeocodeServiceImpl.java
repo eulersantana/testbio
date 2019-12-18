@@ -15,7 +15,7 @@ public class GeocodeServiceImpl implements GeocodeService{
 	
 	@Override
 	public void save(Geocode geocode) {
-		geocodeRepository.save(geocode);
+		geocodeRepository.saveAndFlush(geocode);
 	}
 
 	@Override

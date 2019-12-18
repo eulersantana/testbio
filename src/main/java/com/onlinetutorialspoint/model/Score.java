@@ -19,16 +19,12 @@ public class Score implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(length=200, nullable=true)
 	private Integer size;
 	
-	@Column(length=200, nullable=true)
 	private Integer adaptationForSeniors;
 	
-	@Column(length=200, nullable=true)
 	private Integer medicalEquipment;
 	
-	@Column(length=200, nullable=true)
 	private Integer medecine;
 
 	public Integer getSize() {

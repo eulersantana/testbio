@@ -15,12 +15,11 @@ public class ScoreServiceImpl implements ScoreService{
 
 	@Override
 	public void save(Score score) {
-		scoreRepository.save(score);
+		scoreRepository.saveAndFlush(score);
 	}
 
 	@Override
 	public Optional<Score> get(int id) {
-		// TODO Auto-generated method stub
 		return scoreRepository.findById(id);
 	}
 }

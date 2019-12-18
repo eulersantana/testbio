@@ -9,8 +9,6 @@ public class ScoreDTO {
 	private Integer medicalEquipment;
 	private Integer medecine;
 	
-	
-	
 	public ScoreDTO(Integer size, Integer adaptationForSeniors, Integer medicalEquipment, Integer medecine) {
 		super();
 		this.size = size;

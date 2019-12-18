@@ -60,6 +60,7 @@ public class HealthUnitDTO {
 		this.phone = phone;
 	}
 
+
 	public int getScore() {
 		return score;
 	}
@@ -82,9 +83,13 @@ public class HealthUnitDTO {
 
 	@Override
 	public String toString() {
-		return "HealthUnitDTO [name=" + name + ", address=" + address + ", city=" + city + ", phone="
+		return "HealthUnitDTO [id=" + id + ", name=" + name + ", address=" + address + ", city=" + city + ", phone="
 				+ phone + ", score=" + score + ", geocode=" + geocode + "]";
 	}
 	
 	
+	
+	
 }
+
+

@@ -18,10 +18,8 @@ public class Geocode implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(length=200, nullable=true)
 	private Float lat;
 	
-	@Column(length=200, nullable=true)
 	private Float lng;
     
 	public Geocode() {

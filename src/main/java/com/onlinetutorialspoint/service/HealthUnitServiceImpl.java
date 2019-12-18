@@ -1,20 +1,11 @@
 package com.onlinetutorialspoint.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import com.onlinetutorialspoint.model.Employee;
 import com.onlinetutorialspoint.model.HealthUnit;
 import com.onlinetutorialspoint.repository.HealthUnitRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 
 @Service
 public class HealthUnitServiceImpl implements HealthUnitService {
@@ -23,33 +14,12 @@ public class HealthUnitServiceImpl implements HealthUnitService {
 	private HealthUnitRepository healthUnitRepository;
 
 
+    public Page<HealthUnit> search( Float lat, Float lng, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
 
-//    public Page<Employee> search(
-//            String searchTerm,
-//            int page,
-//            int size) {
-//        PageRequest pageRequest = PageRequest.of(
-//                page,
-//                size,
-//                Sort.Direction.ASC,
-//                "lastName");
-//
-//        return healthUnitRepository.search(
-//                searchTerm.toLowerCase(),
-//                pageRequest);
-//    }
-//
-    public Page<HealthUnit> findAll() {
-        int page = 0;
-        int size = 10;
-        PageRequest pageRequest = PageRequest.of(
-                page,
-                size);
-        return new PageImpl<>(
-        		healthUnitRepository.findAll(), 
-                pageRequest, size);
+        return healthUnitRepository.search(lat, lng, pageRequest);
     }
-    
+
     public void save(HealthUnit healthUnit) {
     	healthUnitRepository.save(healthUnit);
     }
