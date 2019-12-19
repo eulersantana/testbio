@@ -27,5 +27,10 @@ public class HealthUnitServiceImpl implements HealthUnitService {
     	healthUnitRepository.save(healthUnit);
     }
 
+	@Override
+	public HealthUnit getByName(String name) {
+		return healthUnitRepository.findByName(name);
+	}
+
 
 }

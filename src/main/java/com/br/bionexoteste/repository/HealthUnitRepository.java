@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.br.bionexoteste.model.HealthUnit;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,8 +19,10 @@ public interface HealthUnitRepository extends PagingAndSortingRepository<HealthU
 			+ "radians(:longitude)) + sin(radians(:latitude)) * sin(radians(m.geocode.lat))))";
 
 	@Query("SELECT m FROM HealthUnit m WHERE "+HAVERSINE_PART+" < 10000 ORDER BY "+HAVERSINE_PART+" DESC")
-	 Page<HealthUnit> search(@Param("latitude") Float lat, @Param("longitude") Float log, Pageable pageable);
-	    
+	public Page<HealthUnit> search(@Param("latitude") Float lat, @Param("longitude") Float log, Pageable pageable);
+	 
+	@Query("SELECT m FROM HealthUnit m WHERE m.name = :name")
+	public HealthUnit findByName(@Param("name")String name);
 
 }
 

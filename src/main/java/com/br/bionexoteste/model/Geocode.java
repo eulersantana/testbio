@@ -54,6 +54,14 @@ public class Geocode implements Serializable {
 		this.lat = lat;
 		this.log = log;
 	}
+
+	public Geocode(Integer id, Float lat, Float log) {
+		super();
+		this.id = id;
+		this.lat = lat;
+		this.log = log;
+	}
+	
 	
 	
 	

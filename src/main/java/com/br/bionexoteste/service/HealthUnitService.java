@@ -9,4 +9,7 @@ public interface HealthUnitService {
 	public Page<HealthUnit> search(Float lat, Float log, int page, int size); 
 	
 	public void save(HealthUnit healthUnit);
+	
+
+	public HealthUnit getByName(String name);
 }
